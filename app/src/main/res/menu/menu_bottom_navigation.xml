@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/navigation_fixtures"
+        android:enabled="true"
+        android:icon="@drawable/soccer_black"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/navigation_competitions"
+        android:enabled="true"
+        android:icon="@drawable/field_black"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+
+</menu>

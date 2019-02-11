@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/text_table_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/hint_team_position"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/image_team_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image_team_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/image_team_logo"
+        android:src="@drawable/ic_notifications_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/text_table_position"
+        app:layout_constraintEnd_toStartOf="@+id/text_team_name"
+        app:layout_constraintStart_toEndOf="@+id/text_table_position"
+        app:layout_constraintTop_toTopOf="@+id/text_table_position" />
+
+    <TextView
+        android:id="@+id/text_team_name"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/hint_team_name"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/image_team_logo"
+        app:layout_constraintEnd_toStartOf="@+id/text_team_played"
+        app:layout_constraintStart_toEndOf="@+id/image_team_logo"
+        app:layout_constraintTop_toTopOf="@+id/image_team_logo" />
+
+    <TextView
+        android:id="@+id/text_team_played"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/hint_team_played"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/text_team_name"
+        app:layout_constraintEnd_toStartOf="@+id/text_team_difference"
+        app:layout_constraintStart_toEndOf="@+id/text_team_name"
+        app:layout_constraintTop_toTopOf="@+id/text_team_name" />
+
+    <TextView
+        android:id="@+id/text_team_difference"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/hint_team_difference"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/text_team_played"
+        app:layout_constraintEnd_toStartOf="@+id/text_team_points"
+        app:layout_constraintStart_toEndOf="@+id/text_team_played"
+        app:layout_constraintTop_toTopOf="@+id/text_team_played" />
+
+    <TextView
+        android:id="@+id/text_team_points"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/hint_team_points"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@+id/text_team_difference"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_team_difference"
+        app:layout_constraintTop_toTopOf="@+id/text_team_difference" />
+
+</android.support.constraint.ConstraintLayout>
