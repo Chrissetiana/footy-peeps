@@ -21,4 +21,11 @@
     <string name="hint_team_played">35</string>
     <string name="hint_team_difference">76</string>
     <string name="hint_team_points">93</string>
+
+    <string name="category_standings">Table</string>
+    <string name="category_matches">Fixtures</string>
+    <string name="category_teams">Teams</string>
+
+    <string name="navigation_competitions">Competitions</string>
+    <string name="navigation_fixtures">Today\'s Fixtures</string>
 </resources>
