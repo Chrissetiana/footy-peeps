@@ -7,13 +7,14 @@ import android.support.v7.widget.RecyclerView;
 import com.chrissetiana.footypeeps.R;
 
 public class CompetitionsActivity extends AppCompatActivity implements CompetitionsAdapter.ListItemClickListener {
+
     CompetitionsAdapter adapter;
     RecyclerView list;
 
     @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_competitions);
 
         // declare the xml elements here
     }

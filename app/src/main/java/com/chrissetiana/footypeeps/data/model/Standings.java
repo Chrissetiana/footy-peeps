@@ -9,41 +9,32 @@ public class Standings {
     // for competition/standings
     // https://api.football-data.org/v2/competitions/{id}/standings
 
-    @SerializedName("standings")
+    @SerializedName("competition")
     @Expose
-    public List<Standing> standingList = null;
+    public Competition standingCompetition;
 
-    public class Standing {
-        @SerializedName("table")
-        @Expose
-        public List<Table> tableList = null;
+    @SerializedName("standingList")
+    @Expose
+    public List<Standing> standingList;
+
+    public Standings(Competition standingCompetition, List<Standing> standingList) {
+        this.standingCompetition = standingCompetition;
+        this.standingList = standingList;
     }
 
-    public class Table {
-        @SerializedName("position")
-        @Expose
-        public Integer standingPosition;
-
-        @SerializedName("team")
-        @Expose
-        public Team standingTeam;
-
-        @SerializedName("playedGames")
-        @Expose
-        public Integer standingPlayed;
-
-        @SerializedName("points")
-        @Expose
-        public Integer standingPoints;
-
-        @SerializedName("goalDifference")
-        @Expose
-        public Integer standingDifference;
+    public Competition getStandingCompetition() {
+        return standingCompetition;
     }
 
-    public class Team {
-        @SerializedName("name")
-        @Expose
-        public String standingTeamName;
+    public void setStandingCompetition(Competition standingCompetition) {
+        this.standingCompetition = standingCompetition;
+    }
+
+    public List<Standing> getStandingList() {
+        return standingList;
+    }
+
+    public void setStandingList(List<Standing> standingList) {
+        this.standingList = standingList;
     }
 }

@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Footy Peeps</string>
 
-    <string name="title_activity_main">Main Activity</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <!-- main tab names -->
+    <string name="navigation_competitions">Competitions</string>
+    <string name="navigation_fixtures">Today\'s Fixtures</string>
 
+    <!-- for fixtures -->
     <string name="hint_match_status">FINISHED</string>
     <string name="hint_match_time">19:00</string>
     <string name="hint_match_day">MD: 35</string>
@@ -15,17 +15,19 @@
     <string name="hint_away_wins">0</string>
     <string name="hint_00">00</string>
 
+    <!-- for competition list -->
+    <string name="hint_competition_image">Competition Image</string>
+
+    <!-- for individual competition -->
+    <string name="category_standings">Table</string>
+    <string name="category_matches">Fixtures</string>
+    <string name="category_teams">Teams</string>
+
+    <!-- for teams list -->
     <string name="hint_team_position">1</string>
     <string name="image_team_logo">Team Logo</string>
     <string name="hint_team_name">Manchester United</string>
     <string name="hint_team_played">35</string>
     <string name="hint_team_difference">76</string>
     <string name="hint_team_points">93</string>
-
-    <string name="category_standings">Table</string>
-    <string name="category_matches">Fixtures</string>
-    <string name="category_teams">Teams</string>
-
-    <string name="navigation_competitions">Competitions</string>
-    <string name="navigation_fixtures">Today\'s Fixtures</string>
 </resources>

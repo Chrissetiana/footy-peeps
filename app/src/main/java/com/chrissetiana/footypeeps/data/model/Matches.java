@@ -6,78 +6,35 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Matches {
-    // for competition/matches
-    // https://api.football-data.org/v2/competitions/{id}/matches
+    // for today's matchList (fixtures) list
+    // https://api.football-data.org/v2/matchList
 
-    @SerializedName("matches")
+    @SerializedName("countMatches")
     @Expose
-    public List<Match> matchList = null;
+    public Integer countMatches;
 
-    public class Match {
-        @SerializedName("id")
-        @Expose
-        public Integer matchId;
+    @SerializedName("matchList")
+    @Expose
+    public List<Match> matchList;
 
-        @SerializedName("season")
-        @Expose
-        public Season matchSeason;
-
-        @SerializedName("matchday")
-        @Expose
-        public Integer matchDay;
-
-        @SerializedName("status")
-        @Expose
-        public String matchStatus;
-
-        @SerializedName("homeTeam")
-        @Expose
-        public HomeTeam matchHomeTeam;
-
-        @SerializedName("awayTeam")
-        @Expose
-        public AwayTeam matchAwayTeam;
-
-        @SerializedName("score")
-        @Expose
-        public Score matchScore;
+    public Matches(Integer countMatches, List<Match> matchList) {
+        this.countMatches = countMatches;
+        this.matchList = matchList;
     }
 
-    public class Season {
-        @SerializedName("startDate")
-        @Expose
-        public String matchSeasonStart;
-
-        @SerializedName("endDate")
-        @Expose
-        public String matchSeasonEnd;
+    public Integer getCountMatches() {
+        return countMatches;
     }
 
-    public class HomeTeam {
-        @SerializedName("name")
-        @Expose
-        public String matchHomeName;
+    public void setCountMatches(Integer countMatches) {
+        this.countMatches = countMatches;
     }
 
-    public class AwayTeam {
-        @SerializedName("name")
-        @Expose
-        public String matchAwayName;
+    public List<Match> getMatchList() {
+        return matchList;
     }
 
-    public class Score {
-        @SerializedName("fullTime")
-        @Expose
-        public FullTime matchFullTime;
-    }
-
-    public class FullTime {
-        @SerializedName("homeTeam")
-        @Expose
-        public Integer matchHomeWin;
-
-        @SerializedName("awayTeam")
-        @Expose
-        public Integer matchAwayWin;
+    public void setMatchList(List<Match> matchList) {
+        this.matchList = matchList;
     }
 }
