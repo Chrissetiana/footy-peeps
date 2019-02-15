@@ -9,32 +9,19 @@ public class Matches {
     // for today's matchList (matches) list
     // https://api.football-data.org/v2/matchList
 
-    @SerializedName("countMatches")
+    @SerializedName("count")
     @Expose
-    public Integer countMatches;
+    private Integer countMatches;
 
-    @SerializedName("matchList")
+    @SerializedName("matches")
     @Expose
-    public List<Match> matchList;
-
-    public Matches(Integer countMatches, List<Match> matchList) {
-        this.countMatches = countMatches;
-        this.matchList = matchList;
-    }
+    private List<Match> matchList;
 
     public Integer getCountMatches() {
         return countMatches;
     }
 
-    public void setCountMatches(Integer countMatches) {
-        this.countMatches = countMatches;
-    }
-
     public List<Match> getMatchList() {
         return matchList;
-    }
-
-    public void setMatchList(List<Match> matchList) {
-        this.matchList = matchList;
     }
 }

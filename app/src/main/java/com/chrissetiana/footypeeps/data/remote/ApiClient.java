@@ -4,6 +4,8 @@ import com.chrissetiana.footypeeps.util.Config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -18,11 +20,16 @@ public class ApiClient {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            OkHttpClient httpClient = new OkHttpClient.Builder()
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .connectTimeout(10, TimeUnit.SECONDS)
+                    .writeTimeout(10, TimeUnit.SECONDS)
+                    .readTimeout(10, TimeUnit.SECONDS)
+                    .retryOnConnectionFailure(true)
                     .addInterceptor(interceptor)
                     .build();
 
             Gson gson = new GsonBuilder()
+                    .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
 //                    .registerTypeAdapter(String.class, new StringConverter())
 //                    .registerTypeAdapterFactory(new NullStringToEmptyAdapterFactory())
                     .serializeNulls()
@@ -33,7 +40,7 @@ public class ApiClient {
                     .baseUrl(Config.BASE_URL)
 //                    .addConverterFactory(new NullOnEmptyConverterFactory())
                     .addConverterFactory(GsonConverterFactory.create(gson))
-                    .client(httpClient)
+                    .client(okHttpClient)
                     .build();
         }
 

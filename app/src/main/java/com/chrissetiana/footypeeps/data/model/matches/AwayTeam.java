@@ -3,20 +3,13 @@ package com.chrissetiana.footypeeps.data.model.matches;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-class AwayTeam {
+public class AwayTeam {
+
     @SerializedName("name")
     @Expose
-    public String awayTeamName;
-
-    public AwayTeam(String awayTeamName) {
-        this.awayTeamName = awayTeamName;
-    }
+    private String awayTeamName;
 
     public String getAwayTeamName() {
         return awayTeamName;
-    }
-
-    public void setAwayTeamName(String awayTeamName) {
-        this.awayTeamName = awayTeamName;
     }
 }
