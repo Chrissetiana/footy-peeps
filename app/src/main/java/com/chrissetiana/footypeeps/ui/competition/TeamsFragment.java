@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.ui.standings;
+package com.chrissetiana.footypeeps.ui.competition;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,14 +8,14 @@ import android.view.ViewGroup;
 
 import com.chrissetiana.footypeeps.R;
 
-public class StandingsFragment extends Fragment {
+public class TeamsFragment extends Fragment {
 
-    public StandingsFragment() {
+    public TeamsFragment() {
 
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_standings, container, false);
+        return inflater.inflate(R.layout.fragment_teams, container, false);
     }
 }

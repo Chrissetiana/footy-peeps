@@ -5,18 +5,19 @@
     <string name="navigation_competitions">Competitions</string>
     <string name="navigation_fixtures">Today\'s Fixtures</string>
 
-    <!-- for fixtures -->
+    <!-- for matches -->
     <string name="hint_match_status">FINISHED</string>
     <string name="hint_match_time">19:00</string>
     <string name="hint_match_day">MD: 35</string>
     <string name="hint_home_team">Home Team</string>
     <string name="hint_away_team">Away Team</string>
-    <string name="hint_home_wins">1</string>
-    <string name="hint_away_wins">0</string>
+    <string name="hint_home_wins">2</string>
+    <string name="hint_away_wins">1</string>
     <string name="hint_00">00</string>
 
     <!-- for competition list -->
-    <string name="hint_competition_image">Competition Image</string>
+    <string name="hint_competition">Premier League</string>
+    <string name="hint_competition_image">League Logo</string>
 
     <!-- for individual competition -->
     <string name="category_standings">Table</string>
@@ -30,4 +31,9 @@
     <string name="hint_team_played">35</string>
     <string name="hint_team_difference">76</string>
     <string name="hint_team_points">93</string>
+
+    <!-- for players -->
+    <string name="hint_player_name">Jesse Lingard</string>
+    <string name="hint_player_position">Midfielder</string>
+    <string name="hint_player_no">1</string>
 </resources>

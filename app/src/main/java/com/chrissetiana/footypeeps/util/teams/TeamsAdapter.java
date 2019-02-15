@@ -1,30 +1,31 @@
-package com.chrissetiana.footypeeps.ui.competitions;
+package com.chrissetiana.footypeeps.util.teams;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapter.CompetitionsViewHolder> {
+public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHolder> {
 
+    private static final String LOG_TAG = TeamsAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
     private int holderCount;
     private int itemCount;
 
-    public CompetitionsAdapter(int items, ListItemClickListener clickListener) {
+    public TeamsAdapter(int items, ListItemClickListener clickListener) {
         itemCount = items;
         listener = clickListener;
         holderCount = 0;
     }
 
     @Override
-    public CompetitionsAdapter.CompetitionsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public TeamsAdapter.TeamsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new CompetitionsViewHolder(view);
+        return new TeamsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CompetitionsAdapter.CompetitionsViewHolder viewHolder, int position) {
+    public void onBindViewHolder(TeamsAdapter.TeamsViewHolder viewHolder, int position) {
         viewHolder.bind(position);
     }
 
@@ -38,10 +39,14 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
         return android.R.layout.simple_list_item_1;
     }
 
-    class CompetitionsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public interface ListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
+
+    class TeamsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // declare ui var e.g. TextView text;
 
-        CompetitionsViewHolder(View view) {
+        TeamsViewHolder(View view) {
             super(view);
             // initialize ui var e.g. text = view.findByViewId(R.id.);
             view.setOnClickListener(this);
@@ -56,9 +61,5 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
             int position = getAdapterPosition();
             listener.onListItemClick(position);
         }
-    }
-
-    public interface ListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
     }
 }

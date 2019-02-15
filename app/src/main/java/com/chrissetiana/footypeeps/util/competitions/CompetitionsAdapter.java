@@ -1,31 +1,33 @@
-package com.chrissetiana.footypeeps.ui.fixtures;
+package com.chrissetiana.footypeeps.util.competitions;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.FixturesViewHolder> {
+import com.chrissetiana.footypeeps.R;
 
-    private static final String LOG_TAG = FixturesAdapter.class.getSimpleName();
+public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapter.CompetitionsViewHolder> {
+
+    private static final String LOG_TAG = CompetitionsAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
     private int holderCount;
     private int itemCount;
 
-    public FixturesAdapter(int items, ListItemClickListener clickListener) {
+    public CompetitionsAdapter(int items, ListItemClickListener clickListener) {
         itemCount = items;
         listener = clickListener;
         holderCount = 0;
     }
 
     @Override
-    public FixturesAdapter.FixturesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CompetitionsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new FixturesViewHolder(view);
+        return new CompetitionsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(FixturesAdapter.FixturesViewHolder viewHolder, int position) {
+    public void onBindViewHolder(CompetitionsViewHolder viewHolder, int position) {
         viewHolder.bind(position);
     }
 
@@ -36,17 +38,17 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
 
     @Override
     public int getItemViewType(int position) {
-        return android.R.layout.simple_list_item_1;
+        return R.layout.layout_competitions;
     }
 
     public interface ListItemClickListener {
         void onListItemClick(int clickedItemIndex);
     }
 
-    class FixturesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class CompetitionsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // declare ui var e.g. TextView text;
 
-        FixturesViewHolder(View view) {
+        CompetitionsViewHolder(View view) {
             super(view);
             // initialize ui var e.g. text = view.findByViewId(R.id.);
             view.setOnClickListener(this);
@@ -63,4 +65,3 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
         }
     }
 }
-

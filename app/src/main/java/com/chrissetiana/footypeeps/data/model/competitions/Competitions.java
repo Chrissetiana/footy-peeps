@@ -1,9 +1,8 @@
-package com.chrissetiana.footypeeps.data.model;
+package com.chrissetiana.footypeeps.data.model.competitions;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Competitions {
@@ -16,7 +15,7 @@ public class Competitions {
 
     @SerializedName("competitionList")
     @Expose
-    private List<Competition> competitionList = new ArrayList<Competition>();
+    private List<Competition> competitionList;
 
     public Competitions(Integer countCompetitions, List<Competition> competitionList) {
         this.countCompetitions = countCompetitions;

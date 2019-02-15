@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.data.model;
+package com.chrissetiana.footypeeps.data.model.standings;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

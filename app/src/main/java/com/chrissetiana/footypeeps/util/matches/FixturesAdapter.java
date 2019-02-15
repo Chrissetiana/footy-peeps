@@ -1,31 +1,31 @@
-package com.chrissetiana.footypeeps.ui.players;
+package com.chrissetiana.footypeeps.util.matches;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersViewHolder> {
+public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.FixturesViewHolder> {
 
-    private static final String LOG_TAG = PlayersAdapter.class.getSimpleName();
+    private static final String LOG_TAG = FixturesAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
     private int holderCount;
     private int itemCount;
 
-    public PlayersAdapter(int items, ListItemClickListener clickListener) {
+    public FixturesAdapter(int items, ListItemClickListener clickListener) {
         itemCount = items;
         listener = clickListener;
         holderCount = 0;
     }
 
     @Override
-    public PlayersAdapter.PlayersViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FixturesAdapter.FixturesViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new PlayersViewHolder(view);
+        return new FixturesViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(PlayersAdapter.PlayersViewHolder viewHolder, int position) {
+    public void onBindViewHolder(FixturesAdapter.FixturesViewHolder viewHolder, int position) {
         viewHolder.bind(position);
     }
 
@@ -43,10 +43,10 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
         void onListItemClick(int clickedItemIndex);
     }
 
-    class PlayersViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class FixturesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // declare ui var e.g. TextView text;
 
-        PlayersViewHolder(View view) {
+        FixturesViewHolder(View view) {
             super(view);
             // initialize ui var e.g. text = view.findByViewId(R.id.);
             view.setOnClickListener(this);
@@ -63,3 +63,4 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
         }
     }
 }
+
