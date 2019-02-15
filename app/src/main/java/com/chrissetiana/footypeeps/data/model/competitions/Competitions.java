@@ -13,28 +13,21 @@ public class Competitions {
     @Expose
     private Integer countCompetitions;
 
-    @SerializedName("competitionList")
+    @SerializedName("competitions")
     @Expose
     private List<Competition> competitionList;
-
-    public Competitions(Integer countCompetitions, List<Competition> competitionList) {
-        this.countCompetitions = countCompetitions;
-        this.competitionList = competitionList;
-    }
+//    private List<Competition> competitionList = new ArrayList<>();
+//    private Competition[] competitionList;
 
     public Integer getCountCompetitions() {
         return countCompetitions;
-    }
-
-    public void setCountCompetitions(Integer countCompetitions) {
-        this.countCompetitions = countCompetitions;
     }
 
     public List<Competition> getCompetitionList() {
         return competitionList;
     }
 
-    public void setCompetitionList(List<Competition> competitionList) {
-        this.competitionList = competitionList;
-    }
+//    public Competition[] getCompetitionList() {
+//        return competitionList;
+//    }
 }

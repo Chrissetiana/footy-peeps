@@ -21,9 +21,7 @@
         </activity>
         <!--<activity android:name=".ui.matches.FixturesActivity" />-->
         <!--<activity android:name=".ui.competitions.CompetitionsActivity" />-->
-        <!--<activity-->
-        <!--android:name=".ui.competition.CompetitionActivity"-->
-        <!--android:parentActivityName=".ui.competitions.CompetitionsActivity" />-->
+        <activity android:name=".ui.competition.CompetitionActivity" />
         <activity android:name=".ui.teams.PlayersActivity" />
     </application>
 
