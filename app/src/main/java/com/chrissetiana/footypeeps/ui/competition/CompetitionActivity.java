@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.chrissetiana.footypeeps.R;
+import com.chrissetiana.footypeeps.util.competition.CompetitionAdapter;
 
 public class CompetitionActivity extends AppCompatActivity {
 

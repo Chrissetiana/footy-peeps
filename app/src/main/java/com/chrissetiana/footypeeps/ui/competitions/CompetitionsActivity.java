@@ -1,26 +1,21 @@
 package com.chrissetiana.footypeeps.ui.competitions;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.chrissetiana.footypeeps.R;
 
-public class CompetitionsActivity extends AppCompatActivity implements CompetitionsAdapter.ListItemClickListener {
+public class CompetitionsActivity extends Fragment {
 
-    CompetitionsAdapter adapter;
-    RecyclerView list;
+    public CompetitionsActivity() {
 
-    @Override
-    public void onCreate(Bundle savedInstance) {
-        super.onCreate(savedInstance);
-        setContentView(R.layout.activity_competitions);
-
-        // declare the xml elements here
     }
 
     @Override
-    public void onListItemClick(int clickedItemIndex) {
-        // do action here
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.activity_competitions, container, false);
     }
 }

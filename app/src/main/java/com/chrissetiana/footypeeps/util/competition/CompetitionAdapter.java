@@ -12,10 +12,10 @@ import com.chrissetiana.footypeeps.ui.competition.TeamsFragment;
 
 public class CompetitionAdapter extends FragmentPagerAdapter {
 
-    public static final int TABS = 3;
+    private static final int TABS = 3;
     private Context context;
 
-    CompetitionAdapter(Context con, FragmentManager fm) {
+    public CompetitionAdapter(Context con, FragmentManager fm) {
         super(fm);
         context = con;
     }
