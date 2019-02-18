@@ -1,65 +1,106 @@
 package com.chrissetiana.footypeeps.util.standings;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.chrissetiana.footypeeps.R;
+import com.chrissetiana.footypeeps.data.model.standings.Table;
+import com.chrissetiana.footypeeps.util.ListItemClickListener;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class StandingsAdapter extends RecyclerView.Adapter<StandingsAdapter.StandingsViewHolder> {
 
     private static final String LOG_TAG = StandingsAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
-    private int holderCount;
-    private int itemCount;
+    private List<Table> list;
 
-    public StandingsAdapter(int items, ListItemClickListener clickListener) {
-        itemCount = items;
+    public StandingsAdapter(List<Table> standingList, ListItemClickListener clickListener) {
+        list = standingList;
         listener = clickListener;
-        holderCount = 0;
+
+        if (list == null) {
+            Log.d(LOG_TAG, "Where art thy data?");
+        }
     }
 
+    @NonNull
     @Override
-    public StandingsAdapter.StandingsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public StandingsAdapter.StandingsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
         return new StandingsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(StandingsAdapter.StandingsViewHolder viewHolder, int position) {
-        viewHolder.bind(position);
+    public void onBindViewHolder(@NonNull StandingsAdapter.StandingsViewHolder holder, int position) {
+        holder.bind(position);
     }
 
     @Override
     public int getItemCount() {
-        return itemCount;
+        return list.size();
     }
 
     @Override
     public int getItemViewType(int position) {
-        return android.R.layout.simple_list_item_1;
-    }
-
-    public interface ListItemClickListener {
-        void onListItemClick(int clickedItemIndex);
+        return R.layout.layout_standings;
     }
 
     class StandingsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        // declare ui var e.g. TextView text;
+
+        ImageView imageStandingTeam;
+        TextView textTeamPosition;
+        TextView textTeamName;
+        TextView textTeamPlayed;
+        TextView textTeamDifference;
+        TextView textTeamPoints;
 
         StandingsViewHolder(View view) {
             super(view);
-            // initialize ui var e.g. text = view.findByViewId(R.id.);
+
+            imageStandingTeam = view.findViewById(R.id.image_team_logo);
+            textTeamPosition = view.findViewById(R.id.text_table_position);
+            textTeamName = view.findViewById(R.id.text_team_name);
+            textTeamPlayed = view.findViewById(R.id.text_team_played);
+            textTeamDifference = view.findViewById(R.id.text_team_difference);
+            textTeamPoints = view.findViewById(R.id.text_team_points);
+
+            view.setTag(this);
             view.setOnClickListener(this);
         }
 
-        void bind(int position) {
-            // update the ui e.g. text.setText(String.valueOf(index));
+        void bind(int i) {
+            Integer teamPosition = list.get(i).getTablePosition();
+            String teamName = list.get(i).getTableTeam().getTeamName();
+            Integer teamPlayed = list.get(i).getTablePlayed();
+            Integer teamDifference = list.get(i).getTableDifference();
+            Integer teamPoints = list.get(i).getTablePoints();
+
+            Picasso.get()
+                    .load(list.get(i).getTableTeam().getTeamLogo())
+                    .placeholder(R.drawable.soccer_white)
+                    .error(R.drawable.soccer_black)
+                    .into(imageStandingTeam);
+            textTeamPosition.setText(String.format("%d", teamPosition));
+            textTeamName.setText(teamName);
+            textTeamPlayed.setText(String.format("%d", teamPlayed));
+            textTeamDifference.setText(String.format("%d", teamDifference));
+            textTeamPoints.setText(String.format("%d", teamPoints));
         }
 
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            listener.onListItemClick(position);
+            int id = 1;
+            String competition = "";
+            listener.onListItemClick(position, id, competition);
         }
     }
 }

@@ -12,30 +12,17 @@ public class Standings {
 
     @SerializedName("competition")
     @Expose
-    public Competition standingCompetition;
+    private Competition standingCompetition;
 
-    @SerializedName("standingList")
+    @SerializedName("standings")
     @Expose
-    public List<Standing> standingList;
-
-    public Standings(Competition standingCompetition, List<Standing> standingList) {
-        this.standingCompetition = standingCompetition;
-        this.standingList = standingList;
-    }
+    private List<Standing> standingList;
 
     public Competition getStandingCompetition() {
         return standingCompetition;
     }
 
-    public void setStandingCompetition(Competition standingCompetition) {
-        this.standingCompetition = standingCompetition;
-    }
-
     public List<Standing> getStandingList() {
         return standingList;
-    }
-
-    public void setStandingList(List<Standing> standingList) {
-        this.standingList = standingList;
     }
 }
