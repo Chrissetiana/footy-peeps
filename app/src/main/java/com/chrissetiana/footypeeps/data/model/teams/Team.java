@@ -11,56 +11,33 @@ public class Team {
 
     @SerializedName("id")
     @Expose
-    public Integer teamId;
+    private Integer teamId;
 
     @SerializedName("name")
     @Expose
-    public String teamName;
+    private String teamName;
 
     @SerializedName("crestUrl")
     @Expose
-    public String teamLogo;
+    private String teamLogo;
 
     @SerializedName("squad")
     @Expose
-    public List<Squad> squadList;
-
-    public Team(Integer teamId, String teamName, String teamLogo, List<Squad> squadList) {
-        this.teamId = teamId;
-        this.teamName = teamName;
-        this.teamLogo = teamLogo;
-        this.squadList = squadList;
-    }
+    private List<Squad> squadList;
 
     public Integer getTeamId() {
         return teamId;
-    }
-
-    public void setTeamId(Integer teamId) {
-        this.teamId = teamId;
     }
 
     public String getTeamName() {
         return teamName;
     }
 
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
-
     public String getTeamLogo() {
         return teamLogo;
     }
 
-    public void setTeamLogo(String teamLogo) {
-        this.teamLogo = teamLogo;
-    }
-
     public List<Squad> getSquadList() {
         return squadList;
-    }
-
-    public void setSquadList(List<Squad> squad) {
-        this.squadList = squad;
     }
 }

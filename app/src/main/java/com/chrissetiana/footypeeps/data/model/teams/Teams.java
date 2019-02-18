@@ -12,43 +12,25 @@ public class Teams {
 
     @SerializedName("count")
     @Expose
-    public Integer countTeams;
+    private Integer countTeams;
 
     @SerializedName("competition")
     @Expose
-    public Competition teamCompetition;
+    private Competition teamCompetition;
 
     @SerializedName("teams")
     @Expose
-    public List<Team> teamList;
-
-    public Teams(Integer countTeams, Competition teamCompetition, List<Team> teamList) {
-        this.countTeams = countTeams;
-        this.teamCompetition = teamCompetition;
-        this.teamList = teamList;
-    }
+    private List<Team> teamList;
 
     public Integer getCountTeams() {
         return countTeams;
-    }
-
-    public void setCountTeams(Integer countTeams) {
-        this.countTeams = countTeams;
     }
 
     public Competition getTeamCompetition() {
         return teamCompetition;
     }
 
-    public void setTeamCompetition(Competition teamCompetition) {
-        this.teamCompetition = teamCompetition;
-    }
-
     public List<Team> getTeamList() {
         return teamList;
-    }
-
-    public void setTeamList(List<Team> teamList) {
-        this.teamList = teamList;
     }
 }
