@@ -15,14 +15,14 @@ import com.chrissetiana.footypeeps.util.ListItemClickListener;
 import java.util.List;
 import java.util.Objects;
 
-public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.FixturesViewHolder> {
+public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.FixturesViewHolder> {
 
-    private static final String LOG_TAG = FixturesAdapter.class.getSimpleName();
+    private static final String LOG_TAG = MatchesAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
     private List<Match> list;
     private int itemCount;
 
-    public FixturesAdapter(List<Match> matchList, int matchCount, ListItemClickListener clickListener) {
+    public MatchesAdapter(List<Match> matchList, int matchCount, ListItemClickListener clickListener) {
         list = matchList;
         itemCount = matchCount;
         listener = clickListener;
@@ -34,13 +34,13 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
 
     @NonNull
     @Override
-    public FixturesAdapter.FixturesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MatchesAdapter.FixturesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
         return new FixturesViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FixturesAdapter.FixturesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MatchesAdapter.FixturesViewHolder holder, int position) {
         holder.bind(position);
     }
 
@@ -82,11 +82,11 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
         void bind(int i) {
             String matchStatus = list.get(i).getMatchStatus();
             String matchTime = list.get(i).getMatchDate().substring(11, 16);
-            Integer matchDay = list.get(i).getMatchDay();
             String matchHomeTeam = list.get(i).getMatchHomeTeam().getHomeTeamName();
             String matchAwayTeam = list.get(i).getMatchAwayTeam().getAwayTeamName();
 
             try {
+                String matchDay = String.format("%d", list.get(i).getMatchDay());
                 String matchHomeWins = String.valueOf(list.get(i).getMatchScore().getFullTime().getHomeTeamWin());
                 String matchAwayWins = String.valueOf(list.get(i).getMatchScore().getFullTime().getAwayTeamWin());
 
@@ -100,13 +100,16 @@ public class FixturesAdapter extends RecyclerView.Adapter<FixturesAdapter.Fixtur
                 }
                 textAwayWins.setText(matchAwayWins);
 
+                if (matchDay == null || Objects.equals(matchDay, "null")) {
+                    matchDay = "-";
+                }
+                textMatchDay.setText(matchDay);
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
 
             textMatchStatus.setText(matchStatus);
             textMatchTime.setText(matchTime);
-            textMatchDay.setText(matchDay.toString());
             textHomeTeam.setText(matchHomeTeam);
             textAwayTeam.setText(matchAwayTeam);
         }

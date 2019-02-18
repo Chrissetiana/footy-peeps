@@ -18,7 +18,7 @@ import com.chrissetiana.footypeeps.data.model.matches.Matches;
 import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
 import com.chrissetiana.footypeeps.util.ListItemClickListener;
-import com.chrissetiana.footypeeps.util.matches.FixturesAdapter;
+import com.chrissetiana.footypeeps.util.matches.MatchesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +74,7 @@ public class FixturesActivity extends Fragment implements ListItemClickListener 
                     matchList = new ArrayList<>(res.getMatchList());
                     Log.d(LOG_TAG, "matchList:" + matchList.size());
 
-                    FixturesAdapter adapter = new FixturesAdapter(matchList, itemCount, FixturesActivity.this);
+                    MatchesAdapter adapter = new MatchesAdapter(matchList, itemCount, FixturesActivity.this);
                     list.setAdapter(adapter);
 
                     DividerItemDecoration divider = new DividerItemDecoration(list.getContext(), layoutManager.getOrientation());
