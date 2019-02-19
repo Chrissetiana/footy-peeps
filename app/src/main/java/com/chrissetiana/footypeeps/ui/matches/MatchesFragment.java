@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.ui.competition;
+package com.chrissetiana.footypeeps.ui.matches;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,12 +11,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.data.model.matches.Match;
 import com.chrissetiana.footypeeps.data.model.matches.Matches;
 import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
+import com.chrissetiana.footypeeps.ui.competitions.CompetitionActivity;
+import com.chrissetiana.footypeeps.util.ListItemClickListener;
 import com.chrissetiana.footypeeps.util.matches.MatchesAdapter;
 
 import java.util.ArrayList;
@@ -26,7 +29,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MatchesFragment extends Fragment {
+public class MatchesFragment extends Fragment implements ListItemClickListener {
 
     private static final String LOG_TAG = MatchesFragment.class.getSimpleName();
     private List<Match> matchList;
@@ -98,5 +101,12 @@ public class MatchesFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onListItemClick(int clickedItemIndex, int clickedItemId, String clickedItemName) {
+        String msg = "Item #" + clickedItemIndex + " [" + clickedItemName + "] with id of " + clickedItemId + " clicked.";
+        Log.d(LOG_TAG, msg);
+        Toast.makeText(this.getActivity(), msg, Toast.LENGTH_LONG).show();
     }
 }

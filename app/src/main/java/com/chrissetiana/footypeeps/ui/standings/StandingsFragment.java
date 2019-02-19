@@ -1,6 +1,7 @@
-package com.chrissetiana.footypeeps.ui.competition;
+package com.chrissetiana.footypeeps.ui.standings;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.data.model.standings.Standing;
@@ -17,6 +19,8 @@ import com.chrissetiana.footypeeps.data.model.standings.Standings;
 import com.chrissetiana.footypeeps.data.model.standings.Table;
 import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
+import com.chrissetiana.footypeeps.ui.competitions.CompetitionActivity;
+import com.chrissetiana.footypeeps.util.ListItemClickListener;
 import com.chrissetiana.footypeeps.util.standings.StandingsAdapter;
 
 import java.util.ArrayList;
@@ -26,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class StandingsFragment extends Fragment {
+public class StandingsFragment extends Fragment implements ListItemClickListener {
 
     private static final String LOG_TAG = StandingsFragment.class.getSimpleName();
     private List<Standing> standingList;
@@ -37,7 +41,7 @@ public class StandingsFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_standings, container, false);
 
         Log.d(LOG_TAG, LOG_TAG + " ACTIVE");
@@ -57,7 +61,7 @@ public class StandingsFragment extends Fragment {
         Call<Standings> call = apiService.getStandings(competitionId);
         call.enqueue(new Callback<Standings>() {
             @Override
-            public void onResponse(Call<Standings> call, Response<Standings> response) {
+            public void onResponse(@NonNull Call<Standings> call, @NonNull Response<Standings> response) {
                 if (!response.isSuccessful()) {
                     Log.e(LOG_TAG, "FAILED CONNECTION with code " + response.code() + ": " + response.errorBody());
                     return;
@@ -73,17 +77,10 @@ public class StandingsFragment extends Fragment {
                     standingList = new ArrayList<>(res.getStandingList());
                     Log.d(LOG_TAG, "standingList:" + standingList.size());
 
-//                    for (int i=0; i<standingList.size(); i++) {
-//                        final List<Table> tableList = standingList.get(i).getTableList();
-//                        StandingsFragment.this.tableList = new ArrayList<>(tableList);
-//                    }
-//                    there are 3 tables (total, home, away) if we use the loop
-//                    so we take only the 0th one which is for the total standings
-
                     tableList = new ArrayList<>(standingList.get(0).getTableList());
                     Log.d(LOG_TAG, "tableList:" + tableList.size());
 
-                    StandingsAdapter adapter = new StandingsAdapter(tableList, null);
+                    StandingsAdapter adapter = new StandingsAdapter(tableList, StandingsFragment.this);
                     list.setAdapter(adapter);
 
                     DividerItemDecoration divider = new DividerItemDecoration(list.getContext(), layoutManager.getOrientation());
@@ -94,7 +91,7 @@ public class StandingsFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<Standings> call, Throwable t) {
+            public void onFailure(@NonNull Call<Standings> call, @NonNull Throwable t) {
                 try {
                     Log.e(LOG_TAG, "QUERY FAILED: " + t.toString() + " >>> CAUSED BY: " + t.getCause());
                     throw t;
@@ -105,5 +102,12 @@ public class StandingsFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onListItemClick(int clickedItemIndex, int clickedItemId, String clickedItemName) {
+        String msg = "Item #" + clickedItemIndex + " [" + clickedItemName + "] with id of " + clickedItemId + " clicked.";
+        Log.d(LOG_TAG, msg);
+        Toast.makeText(this.getActivity(), msg, Toast.LENGTH_LONG).show();
     }
 }

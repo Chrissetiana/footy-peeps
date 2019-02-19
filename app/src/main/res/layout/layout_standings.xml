@@ -2,7 +2,15 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    app:layout_gravity="top">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="40dp" />
 
     <TextView
         android:id="@+id/text_table_position"
@@ -10,25 +18,32 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:gravity="end"
         android:text="@string/hint_team_position"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/image_team_logo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_position"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_logo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="80dp" />
+
     <ImageView
         android:id="@+id/image_team_logo"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:contentDescription="@string/image_team_logo"
         android:src="@drawable/ic_notifications_black_24dp"
         app:layout_constraintBottom_toBottomOf="@+id/text_table_position"
-        app:layout_constraintEnd_toStartOf="@+id/text_team_name"
-        app:layout_constraintStart_toEndOf="@+id/text_table_position"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_logo"
+        app:layout_constraintStart_toStartOf="@+id/guideline_position"
         app:layout_constraintTop_toTopOf="@+id/text_table_position" />
 
     <TextView
@@ -39,44 +54,69 @@
         android:text="@string/hint_team_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="@+id/image_team_logo"
-        app:layout_constraintEnd_toStartOf="@+id/text_team_played"
-        app:layout_constraintStart_toEndOf="@+id/image_team_logo"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_played"
+        app:layout_constraintStart_toStartOf="@+id/guideline_logo"
         app:layout_constraintTop_toTopOf="@+id/image_team_logo" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_played"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="90dp" />
 
     <TextView
         android:id="@+id/text_team_played"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        android:gravity="end"
         android:text="@string/hint_team_played"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="@+id/text_team_name"
-        app:layout_constraintEnd_toStartOf="@+id/text_team_difference"
-        app:layout_constraintStart_toEndOf="@+id/text_team_name"
-        app:layout_constraintTop_toTopOf="@+id/text_team_name" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline_difference"
+        app:layout_constraintStart_toStartOf="@+id/guideline_played"
+        app:layout_constraintTop_toTopOf="@+id/text_team_name"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_difference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="60dp" />
 
     <TextView
         android:id="@+id/text_team_difference"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        android:gravity="end"
         android:text="@string/hint_team_difference"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="@+id/text_team_played"
-        app:layout_constraintEnd_toStartOf="@+id/text_team_points"
-        app:layout_constraintStart_toEndOf="@+id/text_team_played"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_points"
+        app:layout_constraintStart_toStartOf="@+id/guideline_difference"
         app:layout_constraintTop_toTopOf="@+id/text_team_played" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="30dp" />
 
     <TextView
         android:id="@+id/text_team_points"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
+        android:gravity="end"
         android:text="@string/hint_team_points"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="@+id/text_team_difference"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_team_difference"
+        app:layout_constraintStart_toStartOf="@+id/guideline_points"
         app:layout_constraintTop_toTopOf="@+id/text_team_difference" />
 
 </android.support.constraint.ConstraintLayout>

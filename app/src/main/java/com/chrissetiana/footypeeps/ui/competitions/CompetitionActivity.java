@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.ui.competition;
+package com.chrissetiana.footypeeps.ui.competitions;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import com.chrissetiana.footypeeps.R;
-import com.chrissetiana.footypeeps.util.competition.CompetitionAdapter;
+import com.chrissetiana.footypeeps.util.competitions.CompetitionAdapter;
 
 public class CompetitionActivity extends AppCompatActivity {
 

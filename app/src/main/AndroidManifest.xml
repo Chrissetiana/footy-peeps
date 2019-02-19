@@ -19,10 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--<activity android:name=".ui.matches.FixturesActivity" />-->
-        <!--<activity android:name=".ui.competitions.CompetitionsActivity" />-->
-        <activity android:name=".ui.competition.CompetitionActivity" />
-        <activity android:name=".ui.teams.PlayersActivity" />
+        <activity
+            android:name=".ui.competitions.CompetitionActivity"
+            android:parentActivityName=".ui.MainActivity" />
+        <activity
+            android:name=".ui.teams.PlayersActivity"
+            android:parentActivityName=".ui.competitions.CompetitionActivity" />
     </application>
 
 </manifest>

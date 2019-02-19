@@ -72,21 +72,30 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
 
         void bind(int i) {
             String teamLabel = list.get(i).getTeamName();
+            String teamLogo = list.get(i).getTeamLogo();
 
             Picasso.get()
-                    .load(list.get(i).getTeamLogo())
+                    .load(teamLogo)
                     .placeholder(R.drawable.soccer_white)
                     .error(R.drawable.soccer_black)
                     .into(imageTeamCrest);
+
+//            Picasso.Builder builder = new Picasso.Builder()
+//                    .downloader(new OkHttp3Downloader(TeamsAdapter.this))
+//                    .build()
+//                    .load(teamLogo)
+//                    .placeholder(R.drawable.soccer_black)
+//                    .error(R.drawable.soccer_white)
+//                    .into(imageTeamCrest);
             textTeamLabel.setText(teamLabel);
         }
 
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            int id = list.get(position).getTeamId();
-            String competition = "";
-            listener.onListItemClick(position, id, competition);
+            Integer id = list.get(position).getTeamId();
+            String team = list.get(position).getTeamName();
+            listener.onListItemClick(position, id, team);
         }
     }
 }

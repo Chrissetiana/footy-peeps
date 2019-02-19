@@ -12,13 +12,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.data.model.competitions.Competition;
 import com.chrissetiana.footypeeps.data.model.competitions.Competitions;
 import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
-import com.chrissetiana.footypeeps.ui.competition.CompetitionActivity;
 import com.chrissetiana.footypeeps.util.ListItemClickListener;
 import com.chrissetiana.footypeeps.util.competitions.CompetitionsAdapter;
 
@@ -31,13 +31,9 @@ import retrofit2.Response;
 
 public class CompetitionsActivity extends Fragment implements ListItemClickListener {
 
-    // anywhere you call findViewById() you will need to use view.findViewById()
-    // replace `this` with getActivity()
-
     private static final String LOG_TAG = CompetitionsActivity.class.getSimpleName();
     private List<Competition> competitionList;
     private int itemCount;
-    //    private Competition[] competitionList;
 
     public CompetitionsActivity() {
 
@@ -78,8 +74,6 @@ public class CompetitionsActivity extends Fragment implements ListItemClickListe
                     Log.d(LOG_TAG, "itemCount:" + itemCount);
 
                     competitionList = new ArrayList<>(res.getCompetitionList());
-//                   competitionList = res.getCompetitionList();
-//                   competitionList = res.getCompetitionList();
                     Log.d(LOG_TAG, "competitionList:" + competitionList.size());
 
                     CompetitionsAdapter adapter = new CompetitionsAdapter(competitionList, itemCount, CompetitionsActivity.this);
@@ -107,13 +101,14 @@ public class CompetitionsActivity extends Fragment implements ListItemClickListe
     }
 
     @Override
-    public void onListItemClick(int clickedItemIndex, int clickedItemId, String clickedItemCompetition) {
-        Log.d(LOG_TAG, "Item #" + clickedItemIndex + "[" + clickedItemCompetition + "]" +
-                " with id of " + clickedItemId + " clicked.");
+    public void onListItemClick(int clickedItemIndex, int clickedItemId, String clickedItemName) {
+        String msg = "Item #" + clickedItemIndex + " [" + clickedItemName + "] with id of " + clickedItemId + " clicked.";
+        Log.d(LOG_TAG, msg);
+        Toast.makeText(this.getActivity(), msg, Toast.LENGTH_LONG).show();
 
         Intent intent = new Intent(this.getActivity(), CompetitionActivity.class);
         intent.putExtra("competitionId", clickedItemId);
-        intent.putExtra("competitionName", clickedItemCompetition);
+        intent.putExtra("competitionName", clickedItemName);
         startActivity(intent);
     }
 }

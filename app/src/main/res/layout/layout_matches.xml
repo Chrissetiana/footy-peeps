@@ -1,20 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_begin="110dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/text_match_status"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/hint_match_status"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/text_match_time"
-        app:layout_constraintEnd_toStartOf="@+id/text_home_team"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_status"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
@@ -36,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:text="@string/hint_match_day"
-        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/text_match_time"
         app:layout_constraintStart_toStartOf="@+id/text_match_time"
@@ -45,25 +56,37 @@
     <TextView
         android:id="@+id/text_home_team"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/hint_home_team"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/text_away_team"
-        app:layout_constraintEnd_toStartOf="@+id/text_00"
-        app:layout_constraintStart_toEndOf="@+id/text_match_status"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_scores"
+        app:layout_constraintStart_toStartOf="@+id/guideline_status"
         app:layout_constraintTop_toTopOf="@+id/text_match_status" />
 
     <TextView
         android:id="@+id/text_away_team"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:text="@string/hint_away_team"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="@+id/text_match_day"
         app:layout_constraintEnd_toEndOf="@+id/text_home_team"
         app:layout_constraintStart_toStartOf="@+id/text_home_team"
-        app:layout_constraintTop_toBottomOf="@+id/text_home_team" />
+        app:layout_constraintTop_toBottomOf="@id/text_home_team" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_end="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_home_wins"
@@ -72,10 +95,9 @@
         android:layout_marginEnd="8dp"
         android:text="@string/hint_home_wins"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/text_00"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_home_team"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/text_00"
-        app:layout_constraintTop_toTopOf="@+id/text_home_team" />
+        app:layout_constraintStart_toEndOf="@+id/text_00" />
 
     <TextView
         android:id="@+id/text_away_wins"
@@ -83,21 +105,20 @@
         android:layout_height="wrap_content"
         android:text="@string/hint_away_wins"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toBottomOf="@+id/text_away_team"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_away_team"
         app:layout_constraintEnd_toEndOf="@+id/text_home_wins"
-        app:layout_constraintStart_toStartOf="@+id/text_home_wins"
-        app:layout_constraintTop_toBottomOf="@+id/text_home_wins" />
+        app:layout_constraintStart_toStartOf="@+id/text_home_wins" />
 
     <TextView
         android:id="@+id/text_00"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="@string/hint_00"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
-        app:layout_constraintBottom_toTopOf="@+id/text_away_wins"
+        app:layout_constraintBaseline_toBaselineOf="@+id/text_match_time"
         app:layout_constraintEnd_toStartOf="@+id/text_home_wins"
-        app:layout_constraintStart_toEndOf="@+id/text_home_team"
-        app:layout_constraintTop_toTopOf="@+id/text_match_time" />
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@+id/guideline_scores" />
 
 </android.support.constraint.ConstraintLayout>

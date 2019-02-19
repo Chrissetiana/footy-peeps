@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.data.model.matches.Match;
@@ -99,8 +100,9 @@ public class FixturesActivity extends Fragment implements ListItemClickListener 
     }
 
     @Override
-    public void onListItemClick(int clickedItemIndex, int clickedItemId, String clickedItemCompetition) {
-        Log.d(LOG_TAG, "Item #" + clickedItemIndex + "[" + clickedItemCompetition + "]" +
-                " with id of " + clickedItemId + " clicked.");
+    public void onListItemClick(int clickedItemIndex, int clickedItemId, String clickedItemName) {
+        String msg = "Item #" + clickedItemIndex + " [" + clickedItemName + "] with id of " + clickedItemId + " clicked.";
+        Log.d(LOG_TAG, msg);
+        Toast.makeText(this.getActivity(), msg, Toast.LENGTH_LONG).show();
     }
 }

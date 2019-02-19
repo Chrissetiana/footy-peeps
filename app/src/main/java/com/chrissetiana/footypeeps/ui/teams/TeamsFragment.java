@@ -1,22 +1,25 @@
-package com.chrissetiana.footypeeps.ui.competition;
+package com.chrissetiana.footypeeps.ui.teams;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.data.model.teams.Team;
 import com.chrissetiana.footypeeps.data.model.teams.Teams;
 import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
+import com.chrissetiana.footypeeps.ui.competitions.CompetitionActivity;
+import com.chrissetiana.footypeeps.util.ListItemClickListener;
 import com.chrissetiana.footypeeps.util.teams.TeamsAdapter;
 
 import java.util.ArrayList;
@@ -26,15 +29,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TeamsFragment extends Fragment {
+public class TeamsFragment extends Fragment implements ListItemClickListener {
 
     private static final String LOG_TAG = TeamsFragment.class.getSimpleName();
     private static final int SPAN_COUNT = 2;
     private List<Team> teamList;
     private int itemCount;
+    private int teamId;
 
     public TeamsFragment() {
 
+    }
+
+    public int getTeamId() {
+        return teamId;
     }
 
     @Override
@@ -77,11 +85,8 @@ public class TeamsFragment extends Fragment {
                     teamList = new ArrayList<>(res.getTeamList());
                     Log.d(LOG_TAG, "matchList:" + teamList.size());
 
-                    TeamsAdapter adapter = new TeamsAdapter(teamList, itemCount, null);
+                    TeamsAdapter adapter = new TeamsAdapter(teamList, itemCount, TeamsFragment.this);
                     list.setAdapter(adapter);
-
-                    DividerItemDecoration divider = new DividerItemDecoration(list.getContext(), layoutManager.getOrientation());
-                    list.addItemDecoration(divider);
                 } else {
                     Log.w(LOG_TAG, "RESPONSE IS NULL!");
                 }
@@ -99,5 +104,17 @@ public class TeamsFragment extends Fragment {
         });
 
         return view;
+    }
+
+    @Override
+    public void onListItemClick(int clickedItemIndex, int clickedItemId, String clickedItemName) {
+        String msg = "Item #" + clickedItemIndex + " [" + clickedItemName + "] with id of " + clickedItemId + " clicked.";
+        Log.d(LOG_TAG, msg);
+        Toast.makeText(this.getActivity(), msg, Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this.getActivity(), PlayersActivity.class);
+        intent.putExtra("teamId", clickedItemId);
+        intent.putExtra("teamName", clickedItemName);
+        startActivity(intent);
     }
 }

@@ -16,8 +16,6 @@ public class Competitions {
     @SerializedName("competitions")
     @Expose
     private List<Competition> competitionList;
-//    private List<Competition> competitionList = new ArrayList<>();
-//    private Competition[] competitionList;
 
     public Integer getCountCompetitions() {
         return countCompetitions;
@@ -26,8 +24,4 @@ public class Competitions {
     public List<Competition> getCompetitionList() {
         return competitionList;
     }
-
-//    public Competition[] getCompetitionList() {
-//        return competitionList;
-//    }
 }

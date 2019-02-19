@@ -98,9 +98,9 @@ public class StandingsAdapter extends RecyclerView.Adapter<StandingsAdapter.Stan
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            int id = 1;
-            String competition = "";
-            listener.onListItemClick(position, id, competition);
+            int id = list.get(position).getTableTeam().getTeamId();
+            String name = list.get(position).getTableTeam().getTeamName();
+            listener.onListItemClick(position, id, name);
         }
     }
 }

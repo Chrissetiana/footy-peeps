@@ -19,13 +19,9 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
     private static final String LOG_TAG = CompetitionsAdapter.class.getSimpleName();
     private ListItemClickListener listener;
     private List<Competition> list;
-    //    private Competition[] list;
     private int itemCount;
 
     public CompetitionsAdapter(List<Competition> competitionList, int competitionCount, ListItemClickListener clickListener) {
-//    public CompetitionsAdapter(Competition[] competitionList, int competitionCount) {
-        Log.d(LOG_TAG, "This is the adapter constructor");
-
         list = competitionList;
         itemCount = competitionCount;
         listener = clickListener;
@@ -44,7 +40,6 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
 
     @Override
     public void onBindViewHolder(@NonNull CompetitionsViewHolder holder, int position) {
-//        holder.bind(list.get(position));
         holder.bind(position);
     }
 
@@ -72,8 +67,6 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
         }
 
         void bind(int i) {
-//        void bind(Competition c) {
-//            String competitionName = c.getCompetitionName();
             String competitionName = list.get(i).getCompetitionName();
 
             textCompetitionName.setText(competitionName);

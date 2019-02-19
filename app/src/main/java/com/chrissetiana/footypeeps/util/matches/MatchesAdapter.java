@@ -86,9 +86,14 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.Fixtures
             String matchAwayTeam = list.get(i).getMatchAwayTeam().getAwayTeamName();
 
             try {
-                String matchDay = String.format("%d", list.get(i).getMatchDay());
+                String matchDay = String.format("MD: %d", list.get(i).getMatchDay());
                 String matchHomeWins = String.valueOf(list.get(i).getMatchScore().getFullTime().getHomeTeamWin());
                 String matchAwayWins = String.valueOf(list.get(i).getMatchScore().getFullTime().getAwayTeamWin());
+
+                if (matchDay == null || Objects.equals(matchDay, "null")) {
+                    matchDay = "-";
+                }
+                textMatchDay.setText(matchDay);
 
                 if (matchHomeWins == null || Objects.equals(matchHomeWins, "null")) {
                     matchHomeWins = "-";
@@ -99,11 +104,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.Fixtures
                     matchAwayWins = "-";
                 }
                 textAwayWins.setText(matchAwayWins);
-
-                if (matchDay == null || Objects.equals(matchDay, "null")) {
-                    matchDay = "-";
-                }
-                textMatchDay.setText(matchDay);
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
@@ -118,8 +118,19 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.Fixtures
         public void onClick(View v) {
             int position = getAdapterPosition();
             int id = list.get(position).getMatchId();
-            String competition = list.get(position).getMatchCompetition().getCompetitionName();
-            listener.onListItemClick(position, id, competition);
+            String name = "";
+
+            try {
+                name = list.get(position).getMatchCompetition().getCompetitionName();
+
+                if (name == null || name.equals("null")) {
+                    name = "";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            listener.onListItemClick(position, id, name);
         }
     }
 }

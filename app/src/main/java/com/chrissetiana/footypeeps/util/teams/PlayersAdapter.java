@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.players;
+package com.chrissetiana.footypeeps.util.teams;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -92,8 +92,8 @@ public class PlayersAdapter extends RecyclerView.Adapter<PlayersAdapter.PlayersV
         public void onClick(View v) {
             int position = getAdapterPosition();
             int id = list.get(position).getPlayerId();
-            String competition = "";
-            listener.onListItemClick(position, id, competition);
+            String name = list.get(position).getPlayerName();
+            listener.onListItemClick(position, id, name);
         }
     }
 }

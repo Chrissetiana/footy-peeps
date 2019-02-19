@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.competition;
+package com.chrissetiana.footypeeps.util.competitions;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -6,9 +6,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.chrissetiana.footypeeps.R;
-import com.chrissetiana.footypeeps.ui.competition.MatchesFragment;
-import com.chrissetiana.footypeeps.ui.competition.StandingsFragment;
-import com.chrissetiana.footypeeps.ui.competition.TeamsFragment;
+import com.chrissetiana.footypeeps.ui.matches.MatchesFragment;
+import com.chrissetiana.footypeeps.ui.standings.StandingsFragment;
+import com.chrissetiana.footypeeps.ui.teams.TeamsFragment;
 
 public class CompetitionAdapter extends FragmentPagerAdapter {
 

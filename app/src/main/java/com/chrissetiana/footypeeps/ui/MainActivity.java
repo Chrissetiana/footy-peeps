@@ -21,10 +21,6 @@ import com.chrissetiana.footypeeps.ui.matches.FixturesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    // this class should not have logic (i.e. condition, loops, etc)
-    // here you can connect to listeners, adapters, etc.
-    // basically just displaying and updating the ui
-
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     @Override
@@ -33,18 +29,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         checkConnection();
+        init();
     }
 
     private void checkConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         assert connectivityManager != null;
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        assert networkInfo != null;
 
         if (networkInfo == null && !networkInfo.isConnected()) {
             AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this)
                     .setTitle("Connection Failed")
                     .setMessage("Check your connection and try again.")
-                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    .setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             checkConnection();
@@ -53,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
             myAlertBuilder.show();
         } else {
             Log.d(LOG_TAG, "CONNECTED");
-            init();
         }
     }
 
@@ -69,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Fragment fragment;
                 int id = item.getItemId();
+                assert toolbar != null;
 
                 switch (id) {
                     case navCompetitions:
