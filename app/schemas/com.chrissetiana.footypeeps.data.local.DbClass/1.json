@@ -1,0 +1,426 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "8c913cd32d87be1dbe46e8ce7380cb69",
+    "entities": [
+      {
+        "tableName": "competitions",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`no` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `id` INTEGER, `name` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "baseId",
+            "columnName": "no",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "competitionId",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "competitionName",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "no"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_competitions_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_competitions_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_competitions_name",
+            "unique": true,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_competitions_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "matches",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`no` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `comp_id` INTEGER, `id` INTEGER, `date` TEXT, `status` TEXT, `matchday` INTEGER, `home_team` TEXT, `home_win` INTEGER, `away_team` TEXT, `away_win` INTEGER, FOREIGN KEY(`comp_id`) REFERENCES `competitions`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "baseId",
+            "columnName": "no",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "matchCompetitionId",
+            "columnName": "comp_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchId",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchDate",
+            "columnName": "date",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchStatus",
+            "columnName": "status",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchDay",
+            "columnName": "matchday",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchHomeTeam",
+            "columnName": "home_team",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchHomeWin",
+            "columnName": "home_win",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchAwayTeam",
+            "columnName": "away_team",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "matchAwayWin",
+            "columnName": "away_win",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "no"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_matches_comp_id",
+            "unique": false,
+            "columnNames": [
+              "comp_id"
+            ],
+            "createSql": "CREATE  INDEX `index_matches_comp_id` ON `${TABLE_NAME}` (`comp_id`)"
+          },
+          {
+            "name": "index_matches_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_matches_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_matches_home_team",
+            "unique": false,
+            "columnNames": [
+              "home_team"
+            ],
+            "createSql": "CREATE  INDEX `index_matches_home_team` ON `${TABLE_NAME}` (`home_team`)"
+          },
+          {
+            "name": "index_matches_away_team",
+            "unique": false,
+            "columnNames": [
+              "away_team"
+            ],
+            "createSql": "CREATE  INDEX `index_matches_away_team` ON `${TABLE_NAME}` (`away_team`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "competitions",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "comp_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "players",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`no` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `team_id` INTEGER, `id` INTEGER, `name` TEXT, `position` TEXT, `shirt_no` INTEGER, FOREIGN KEY(`team_id`) REFERENCES `teams`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "baseId",
+            "columnName": "no",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "playerTeamId",
+            "columnName": "team_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerId",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerName",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerPosition",
+            "columnName": "position",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "playerNumber",
+            "columnName": "shirt_no",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "no"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_players_team_id",
+            "unique": false,
+            "columnNames": [
+              "team_id"
+            ],
+            "createSql": "CREATE  INDEX `index_players_team_id` ON `${TABLE_NAME}` (`team_id`)"
+          },
+          {
+            "name": "index_players_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_players_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_players_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE  INDEX `index_players_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "teams",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "team_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "standings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`no` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `comp_id` INTEGER, `position` INTEGER, `name` TEXT, `played` INTEGER, `points` INTEGER, `difference` INTEGER, FOREIGN KEY(`comp_id`) REFERENCES `competitions`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "baseId",
+            "columnName": "no",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tableCompetitionId",
+            "columnName": "comp_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tablePosition",
+            "columnName": "position",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tableTeam",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tablePlayed",
+            "columnName": "played",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tablePoints",
+            "columnName": "points",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "tableDifference",
+            "columnName": "difference",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "no"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_standings_comp_id",
+            "unique": false,
+            "columnNames": [
+              "comp_id"
+            ],
+            "createSql": "CREATE  INDEX `index_standings_comp_id` ON `${TABLE_NAME}` (`comp_id`)"
+          },
+          {
+            "name": "index_standings_name",
+            "unique": false,
+            "columnNames": [
+              "name"
+            ],
+            "createSql": "CREATE  INDEX `index_standings_name` ON `${TABLE_NAME}` (`name`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "competitions",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "comp_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "teams",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`no` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `comp_id` INTEGER, `id` INTEGER, `name` TEXT, `logo` TEXT, FOREIGN KEY(`comp_id`) REFERENCES `competitions`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "baseId",
+            "columnName": "no",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "teamCompetitionId",
+            "columnName": "comp_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "teamId",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "teamName",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "teamLogo",
+            "columnName": "logo",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "no"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_teams_comp_id",
+            "unique": false,
+            "columnNames": [
+              "comp_id"
+            ],
+            "createSql": "CREATE  INDEX `index_teams_comp_id` ON `${TABLE_NAME}` (`comp_id`)"
+          },
+          {
+            "name": "index_teams_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_teams_id` ON `${TABLE_NAME}` (`id`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "competitions",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "comp_id"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"8c913cd32d87be1dbe46e8ce7380cb69\")"
+    ]
+  }
+}

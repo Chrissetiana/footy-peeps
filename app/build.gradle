@@ -9,6 +9,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation": "$projectDir/schemas".toString()]
+            }
+        }
     }
     buildTypes {
         release {
@@ -38,4 +43,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.android.support:cardview-v7:28.0.0'
+    implementation 'android.arch.persistence.room:runtime:' + rootProject.roomVersion
+    annotationProcessor 'android.arch.persistence.room:compiler:' + rootProject.roomVersion
+    androidTestImplementation 'android.arch.persistence.room:testing:' + rootProject.roomVersion
 }
