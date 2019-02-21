@@ -1,16 +1,11 @@
 package com.chrissetiana.footypeeps.ui;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -18,6 +13,7 @@ import android.view.MenuItem;
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.ui.competitions.CompetitionsActivity;
 import com.chrissetiana.footypeeps.ui.matches.FixturesActivity;
+import com.chrissetiana.footypeeps.util.ConnectivityStatus;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,29 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkConnection();
-        init();
-    }
-
-    private void checkConnection() {
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        assert connectivityManager != null;
-        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-        assert networkInfo != null;
-
-        if (networkInfo == null && !networkInfo.isConnected()) {
-            AlertDialog.Builder myAlertBuilder = new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("Connection Failed")
-                    .setMessage("Check your connection and try again.")
-                    .setNeutralButton("Dismiss", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            checkConnection();
-                        }
-                    });
-            myAlertBuilder.show();
-        } else {
+        if (ConnectivityStatus.getInstance(this).isConnected()) {
             Log.d(LOG_TAG, "CONNECTED");
+            init();
+        } else {
+            Log.d(LOG_TAG, "CHECK INTERNET CONNECTION");
         }
     }
 

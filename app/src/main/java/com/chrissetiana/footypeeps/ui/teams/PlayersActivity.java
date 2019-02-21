@@ -19,7 +19,7 @@ import com.chrissetiana.footypeeps.data.model.teams.Team;
 import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
 import com.chrissetiana.footypeeps.util.ListItemClickListener;
-import com.chrissetiana.footypeeps.util.teams.PlayersAdapter;
+import com.chrissetiana.footypeeps.util.remote.teams.PlayersAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

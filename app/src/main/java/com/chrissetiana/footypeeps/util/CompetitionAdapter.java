@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.competitions;
+package com.chrissetiana.footypeeps.util;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;

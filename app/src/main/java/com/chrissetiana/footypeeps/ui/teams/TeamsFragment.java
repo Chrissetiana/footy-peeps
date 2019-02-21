@@ -20,7 +20,7 @@ import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
 import com.chrissetiana.footypeeps.ui.competitions.CompetitionActivity;
 import com.chrissetiana.footypeeps.util.ListItemClickListener;
-import com.chrissetiana.footypeeps.util.teams.TeamsAdapter;
+import com.chrissetiana.footypeeps.util.remote.teams.TeamsAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,6 @@ public class TeamsFragment extends Fragment implements ListItemClickListener {
     private static final String LOG_TAG = TeamsFragment.class.getSimpleName();
     private static final int SPAN_COUNT = 2;
     private List<Team> teamList;
-    private int itemCount;
     private int teamId;
 
     public TeamsFragment() {

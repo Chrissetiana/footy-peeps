@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.standings;
+package com.chrissetiana.footypeeps.util.remote.standings;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

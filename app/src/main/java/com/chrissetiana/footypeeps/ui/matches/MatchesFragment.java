@@ -20,7 +20,7 @@ import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
 import com.chrissetiana.footypeeps.ui.competitions.CompetitionActivity;
 import com.chrissetiana.footypeeps.util.ListItemClickListener;
-import com.chrissetiana.footypeeps.util.matches.MatchesAdapter;
+import com.chrissetiana.footypeeps.util.remote.matches.MatchesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,6 @@ public class MatchesFragment extends Fragment implements ListItemClickListener {
 
     private static final String LOG_TAG = MatchesFragment.class.getSimpleName();
     private List<Match> matchList;
-    private int itemCount;
 
     public MatchesFragment() {
 

@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.competitions;
+package com.chrissetiana.footypeeps.util.remote.competitions;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
