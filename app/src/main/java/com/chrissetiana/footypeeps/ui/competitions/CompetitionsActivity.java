@@ -70,13 +70,10 @@ public class CompetitionsActivity extends Fragment implements ListItemClickListe
                 if (res != null) {
                     Log.d(LOG_TAG, "Data received from " + response.body().toString());
 
-                    itemCount = res.getCountCompetitions();
-                    Log.d(LOG_TAG, "itemCount:" + itemCount);
-
                     competitionList = new ArrayList<>(res.getCompetitionList());
                     Log.d(LOG_TAG, "competitionList:" + competitionList.size());
 
-                    CompetitionsAdapter adapter = new CompetitionsAdapter(competitionList, itemCount, CompetitionsActivity.this);
+                    CompetitionsAdapter adapter = new CompetitionsAdapter(competitionList, CompetitionsActivity.this);
                     list.setAdapter(adapter);
 
                     DividerItemDecoration divider = new DividerItemDecoration(list.getContext(), layoutManager.getOrientation());

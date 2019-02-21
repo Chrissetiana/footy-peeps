@@ -79,13 +79,10 @@ public class TeamsFragment extends Fragment implements ListItemClickListener {
                 if (res != null) {
                     Log.d(LOG_TAG, "Data received from " + response.body().toString());
 
-                    itemCount = res.getCountTeams();
-                    Log.d(LOG_TAG, "itemCount:" + itemCount);
-
                     teamList = new ArrayList<>(res.getTeamList());
                     Log.d(LOG_TAG, "matchList:" + teamList.size());
 
-                    TeamsAdapter adapter = new TeamsAdapter(teamList, itemCount, TeamsFragment.this);
+                    TeamsAdapter adapter = new TeamsAdapter(teamList, TeamsFragment.this);
                     list.setAdapter(adapter);
                 } else {
                     Log.w(LOG_TAG, "RESPONSE IS NULL!");

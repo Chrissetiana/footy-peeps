@@ -73,13 +73,10 @@ public class MatchesFragment extends Fragment implements ListItemClickListener {
                 if (res != null) {
                     Log.d(LOG_TAG, "Data received from " + response.body().toString());
 
-                    itemCount = res.getCountMatches();
-                    Log.d(LOG_TAG, "itemCount:" + itemCount);
-
                     matchList = new ArrayList<>(res.getMatchList());
                     Log.d(LOG_TAG, "matchList:" + matchList.size());
 
-                    MatchesAdapter adapter = new MatchesAdapter(matchList, itemCount, null);
+                    MatchesAdapter adapter = new MatchesAdapter(matchList, MatchesFragment.this);
                     list.setAdapter(adapter);
 
                     DividerItemDecoration divider = new DividerItemDecoration(list.getContext(), layoutManager.getOrientation());

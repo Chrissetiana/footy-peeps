@@ -19,14 +19,12 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
     private static final String LOG_TAG = CompetitionsAdapter.class.getSimpleName();
     private ListItemClickListener listener;
     private List<Competition> list;
-    private int itemCount;
 
-    public CompetitionsAdapter(List<Competition> competitionList, int competitionCount, ListItemClickListener clickListener) {
+    public CompetitionsAdapter(List<Competition> competitionList, ListItemClickListener clickListener) {
         list = competitionList;
-        itemCount = competitionCount;
         listener = clickListener;
 
-        if (list == null || itemCount == 0) {
+        if (list == null || list.size() == 0) {
             Log.d(LOG_TAG, "Where art thy data?");
         }
     }
@@ -45,7 +43,7 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
 
     @Override
     public int getItemCount() {
-        return itemCount;
+        return list.size();
     }
 
     @Override

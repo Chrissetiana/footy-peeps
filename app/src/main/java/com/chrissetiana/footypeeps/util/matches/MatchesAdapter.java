@@ -20,14 +20,12 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.Fixtures
     private static final String LOG_TAG = MatchesAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
     private List<Match> list;
-    private int itemCount;
 
-    public MatchesAdapter(List<Match> matchList, int matchCount, ListItemClickListener clickListener) {
+    public MatchesAdapter(List<Match> matchList, ListItemClickListener clickListener) {
         list = matchList;
-        itemCount = matchCount;
         listener = clickListener;
 
-        if (list == null || itemCount == 0) {
+        if (list == null || list.size() == 0) {
             Log.d(LOG_TAG, "Where art thy data?");
         }
     }
@@ -46,7 +44,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesAdapter.Fixtures
 
     @Override
     public int getItemCount() {
-        return itemCount;
+        return list.size();
     }
 
     @Override

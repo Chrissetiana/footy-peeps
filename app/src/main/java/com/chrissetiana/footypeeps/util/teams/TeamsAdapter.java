@@ -21,14 +21,12 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
     private static final String LOG_TAG = TeamsAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
     private List<Team> list;
-    private int itemCount;
 
-    public TeamsAdapter(java.util.List<Team> teamList, int teamCount, ListItemClickListener clickListener) {
+    public TeamsAdapter(java.util.List<Team> teamList, ListItemClickListener clickListener) {
         list = teamList;
-        itemCount = teamCount;
         listener = clickListener;
 
-        if (list == null || itemCount == 0) {
+        if (list == null || list.size() == 0) {
             Log.d(LOG_TAG, "Where art thy data?");
         }
     }
@@ -47,7 +45,7 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
 
     @Override
     public int getItemCount() {
-        return itemCount;
+        return list.size();
     }
 
     @Override
