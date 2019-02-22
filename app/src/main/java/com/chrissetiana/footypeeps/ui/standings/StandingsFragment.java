@@ -80,7 +80,7 @@ public class StandingsFragment extends Fragment implements ListItemClickListener
                     tableList = new ArrayList<>(standingList.get(0).getTableList());
                     Log.d(LOG_TAG, "tableList:" + tableList.size());
 
-                    StandingsAdapter adapter = new StandingsAdapter(tableList, StandingsFragment.this);
+                    StandingsAdapter adapter = new StandingsAdapter(StandingsFragment.this.getActivity(), tableList, StandingsFragment.this);
                     list.setAdapter(adapter);
 
                     DividerItemDecoration divider = new DividerItemDecoration(list.getContext(), layoutManager.getOrientation());

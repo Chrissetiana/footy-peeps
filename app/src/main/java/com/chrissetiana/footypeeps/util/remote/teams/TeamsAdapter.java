@@ -1,5 +1,7 @@
 package com.chrissetiana.footypeeps.util.remote.teams;
 
+import android.app.Activity;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.data.model.teams.Team;
 import com.chrissetiana.footypeeps.util.ListItemClickListener;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -21,10 +25,12 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
     private static final String LOG_TAG = TeamsAdapter.class.getSimpleName();
     private final ListItemClickListener listener;
     private List<Team> list;
+    private Activity act;
 
-    public TeamsAdapter(java.util.List<Team> teamList, ListItemClickListener clickListener) {
+    public TeamsAdapter(Activity activity, List<Team> teamList, ListItemClickListener clickListener) {
         list = teamList;
         listener = clickListener;
+        act = activity;
 
         if (list == null || list.size() == 0) {
             Log.d(LOG_TAG, "Where art thy data?");
@@ -74,17 +80,22 @@ public class TeamsAdapter extends RecyclerView.Adapter<TeamsAdapter.TeamsViewHol
 
             Picasso.get()
                     .load(teamLogo)
-                    .placeholder(R.drawable.soccer_white)
-                    .error(R.drawable.soccer_black)
-                    .into(imageTeamCrest);
+                    .placeholder(R.drawable.soccer_black)
+                    .into(imageTeamCrest, new Callback() {
+                        @Override
+                        public void onSuccess() {
 
-//            Picasso.Builder builder = new Picasso.Builder()
-//                    .downloader(new OkHttp3Downloader(TeamsAdapter.this))
-//                    .build()
-//                    .load(teamLogo)
-//                    .placeholder(R.drawable.soccer_black)
-//                    .error(R.drawable.soccer_white)
-//                    .into(imageTeamCrest);
+                        }
+
+                        @Override
+                        public void onError(Exception e) {
+                            if (!act.isFinishing()) {
+                                GlideToVectorYou.init()
+                                        .with(act)
+                                        .load(Uri.parse(teamLogo), imageTeamCrest);
+                            }
+                        }
+                    });
             textTeamLabel.setText(teamLabel);
         }
 

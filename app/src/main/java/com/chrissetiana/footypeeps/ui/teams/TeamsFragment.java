@@ -34,14 +34,9 @@ public class TeamsFragment extends Fragment implements ListItemClickListener {
     private static final String LOG_TAG = TeamsFragment.class.getSimpleName();
     private static final int SPAN_COUNT = 2;
     private List<Team> teamList;
-    private int teamId;
 
     public TeamsFragment() {
 
-    }
-
-    public int getTeamId() {
-        return teamId;
     }
 
     @Override
@@ -81,7 +76,7 @@ public class TeamsFragment extends Fragment implements ListItemClickListener {
                     teamList = new ArrayList<>(res.getTeamList());
                     Log.d(LOG_TAG, "matchList:" + teamList.size());
 
-                    TeamsAdapter adapter = new TeamsAdapter(teamList, TeamsFragment.this);
+                    TeamsAdapter adapter = new TeamsAdapter(TeamsFragment.this.getActivity(), teamList, TeamsFragment.this);
                     list.setAdapter(adapter);
                 } else {
                     Log.w(LOG_TAG, "RESPONSE IS NULL!");
