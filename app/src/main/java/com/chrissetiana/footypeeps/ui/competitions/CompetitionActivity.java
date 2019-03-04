@@ -8,11 +8,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 
 import com.chrissetiana.footypeeps.R;
-import com.chrissetiana.footypeeps.util.CompetitionAdapter;
+import com.chrissetiana.footypeeps.util.competitions.CompetitionAdapter;
 
 public class CompetitionActivity extends AppCompatActivity {
 
+    private static final String KEY_ID = "competition_id";
+    private static final String KEY_NAME = "competition_name";
     private int competitionId;
+    private String competitionName;
 
     public int getCompetitionId() {
         return competitionId;
@@ -25,11 +28,20 @@ public class CompetitionActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         competitionId = intent.getIntExtra("competitionId", 0);
-        String competitionName = intent.getStringExtra("competitionName");
+        competitionName = intent.getStringExtra("competitionName");
+
+        if (savedInstanceState != null) {
+            if (savedInstanceState.containsKey(KEY_ID)) {
+                competitionId = savedInstanceState.getInt(KEY_ID);
+            }
+
+            if (savedInstanceState.containsKey(KEY_NAME)) {
+                competitionName = savedInstanceState.getString(KEY_NAME);
+            }
+        }
 
         ActionBar toolbar = getSupportActionBar();
         toolbar.setTitle(competitionName);
-        toolbar.setDisplayHomeAsUpEnabled(true);
 
         CompetitionAdapter adapter = new CompetitionAdapter(this, getSupportFragmentManager());
 
@@ -38,6 +50,14 @@ public class CompetitionActivity extends AppCompatActivity {
 
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+
+        bundle.putInt(KEY_ID, competitionId);
+        bundle.putString(KEY_NAME, competitionName);
     }
 
     @Override

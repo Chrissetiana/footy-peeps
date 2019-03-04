@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.remote.standings;
+package com.chrissetiana.footypeeps.util.standings;
 
 import android.app.Activity;
 import android.net.Uri;

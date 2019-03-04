@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.remote.teams;
+package com.chrissetiana.footypeeps.util.teams;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;

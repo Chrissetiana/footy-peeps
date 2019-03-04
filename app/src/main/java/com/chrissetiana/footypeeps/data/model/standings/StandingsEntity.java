@@ -1,10 +1,12 @@
-package com.chrissetiana.footypeeps.data.local.entity;
+package com.chrissetiana.footypeeps.data.model.standings;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.Index;
 import android.arch.persistence.room.PrimaryKey;
+
+import com.chrissetiana.footypeeps.data.model.competitions.CompetitionsEntity;
 
 @Entity(tableName = "standings",
         indices = {

@@ -19,7 +19,7 @@ import com.chrissetiana.footypeeps.data.model.matches.Matches;
 import com.chrissetiana.footypeeps.data.remote.ApiClient;
 import com.chrissetiana.footypeeps.data.remote.ApiService;
 import com.chrissetiana.footypeeps.util.ListItemClickListener;
-import com.chrissetiana.footypeeps.util.remote.matches.MatchesAdapter;
+import com.chrissetiana.footypeeps.util.matches.MatchesAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

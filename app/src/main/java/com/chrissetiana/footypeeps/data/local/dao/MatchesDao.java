@@ -7,7 +7,7 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
-import com.chrissetiana.footypeeps.data.local.entity.MatchesEntity;
+import com.chrissetiana.footypeeps.data.model.matches.MatchesEntity;
 
 import java.util.List;
 

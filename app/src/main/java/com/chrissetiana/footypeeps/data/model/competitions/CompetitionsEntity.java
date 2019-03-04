@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.data.local.entity;
+package com.chrissetiana.footypeeps.data.model.competitions;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

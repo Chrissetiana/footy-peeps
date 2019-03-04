@@ -1,5 +1,6 @@
-package com.chrissetiana.footypeeps.util.local.competitions;
+package com.chrissetiana.footypeeps.util.standings;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,27 +8,28 @@ import android.view.ViewGroup;
 
 import com.chrissetiana.footypeeps.R;
 
-public class CompetitionsPresenter extends RecyclerView.Adapter<CompetitionsPresenter.CompetitionsViewHolder> {
+public class StandingsPresenter extends RecyclerView.Adapter<StandingsPresenter.StandingsViewHolder> {
 
-    private static final String LOG_TAG = CompetitionsPresenter.class.getSimpleName();
+    private static final String LOG_TAG = StandingsPresenter.class.getSimpleName();
     private final ListItemClickListener listener;
     private int holderCount;
     private int itemCount;
 
-    public CompetitionsPresenter(int items, ListItemClickListener clickListener) {
+    public StandingsPresenter(int items, ListItemClickListener clickListener) {
         itemCount = items;
         listener = clickListener;
         holderCount = 0;
     }
 
+    @NonNull
     @Override
-    public CompetitionsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public StandingsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new CompetitionsViewHolder(view);
+        return new StandingsViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(CompetitionsViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull StandingsViewHolder viewHolder, int position) {
         viewHolder.bind(position);
     }
 
@@ -45,10 +47,10 @@ public class CompetitionsPresenter extends RecyclerView.Adapter<CompetitionsPres
         void onListItemClick(int clickedItemIndex);
     }
 
-    class CompetitionsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class StandingsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // declare ui var e.g. TextView text;
 
-        CompetitionsViewHolder(View view) {
+        StandingsViewHolder(View view) {
             super(view);
             // initialize ui var e.g. text = view.findByViewId(R.id.);
             view.setOnClickListener(this);

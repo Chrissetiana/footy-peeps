@@ -8,11 +8,11 @@ import com.chrissetiana.footypeeps.data.local.dao.MatchesDao;
 import com.chrissetiana.footypeeps.data.local.dao.PlayersDao;
 import com.chrissetiana.footypeeps.data.local.dao.StandingsDao;
 import com.chrissetiana.footypeeps.data.local.dao.TeamsDao;
-import com.chrissetiana.footypeeps.data.local.entity.CompetitionsEntity;
-import com.chrissetiana.footypeeps.data.local.entity.MatchesEntity;
-import com.chrissetiana.footypeeps.data.local.entity.PlayersEntity;
-import com.chrissetiana.footypeeps.data.local.entity.StandingsEntity;
-import com.chrissetiana.footypeeps.data.local.entity.TeamsEntity;
+import com.chrissetiana.footypeeps.data.model.competitions.CompetitionsEntity;
+import com.chrissetiana.footypeeps.data.model.matches.MatchesEntity;
+import com.chrissetiana.footypeeps.data.model.standings.StandingsEntity;
+import com.chrissetiana.footypeeps.data.model.teams.PlayersEntity;
+import com.chrissetiana.footypeeps.data.model.teams.TeamsEntity;
 import com.chrissetiana.footypeeps.util.Config;
 
 @Database(entities = {CompetitionsEntity.class, MatchesEntity.class, PlayersEntity.class, StandingsEntity.class, TeamsEntity.class},

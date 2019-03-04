@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import com.chrissetiana.footypeeps.R;
 import com.chrissetiana.footypeeps.ui.competitions.CompetitionsActivity;
 import com.chrissetiana.footypeeps.ui.matches.FixturesActivity;
-import com.chrissetiana.footypeeps.util.ConnectivityStatus;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,15 +23,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (ConnectivityStatus.getInstance(this).isConnected()) {
-            Log.d(LOG_TAG, "CONNECTED");
-            init();
-        } else {
-            Log.d(LOG_TAG, "CHECK INTERNET CONNECTION");
-        }
-    }
-
-    private void init() {
         ActionBar toolbar = getSupportActionBar();
 
         final int navCompetitions = R.id.navigation_competitions;

@@ -1,5 +1,6 @@
-package com.chrissetiana.footypeeps.util.local.teams;
+package com.chrissetiana.footypeeps.util.matches;
 
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,27 +8,28 @@ import android.view.ViewGroup;
 
 import com.chrissetiana.footypeeps.R;
 
-public class TeamsPresenter extends RecyclerView.Adapter<TeamsPresenter.TeamsViewHolder> {
+public class MatchesPresenter extends RecyclerView.Adapter<MatchesPresenter.MatchesViewHolder> {
 
-    private static final String LOG_TAG = TeamsPresenter.class.getSimpleName();
+    private static final String LOG_TAG = MatchesPresenter.class.getSimpleName();
     private final ListItemClickListener listener;
     private int holderCount;
     private int itemCount;
 
-    public TeamsPresenter(int items, ListItemClickListener clickListener) {
+    public MatchesPresenter(int items, ListItemClickListener clickListener) {
         itemCount = items;
         listener = clickListener;
         holderCount = 0;
     }
 
+    @NonNull
     @Override
-    public TeamsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
-        return new TeamsViewHolder(view);
+        return new MatchesViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(TeamsViewHolder viewHolder, int position) {
+    public void onBindViewHolder(@NonNull MatchesViewHolder viewHolder, int position) {
         viewHolder.bind(position);
     }
 
@@ -45,10 +47,10 @@ public class TeamsPresenter extends RecyclerView.Adapter<TeamsPresenter.TeamsVie
         void onListItemClick(int clickedItemIndex);
     }
 
-    class TeamsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class MatchesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         // declare ui var e.g. TextView text;
 
-        TeamsViewHolder(View view) {
+        MatchesViewHolder(View view) {
             super(view);
             // initialize ui var e.g. text = view.findByViewId(R.id.);
             view.setOnClickListener(this);
@@ -65,3 +67,4 @@ public class TeamsPresenter extends RecyclerView.Adapter<TeamsPresenter.TeamsVie
         }
     }
 }
+    

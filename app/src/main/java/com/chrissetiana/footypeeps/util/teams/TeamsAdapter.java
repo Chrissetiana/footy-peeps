@@ -1,4 +1,4 @@
-package com.chrissetiana.footypeeps.util.remote.teams;
+package com.chrissetiana.footypeeps.util.teams;
 
 import android.app.Activity;
 import android.net.Uri;
